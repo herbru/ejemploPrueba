@@ -10,6 +10,10 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    int contProcesamientos = 0;
+    int contCheckBox = 0;
+    int contMismoContenido = 0;
+    int CaracTextoMasLargo = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,10 +21,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void procesar(View vista){
-        int contProcesamientos = 0;
-        int contCheckBox = 0;
-        int contMismoContenido = 0;
-        int CaracTextoMasLargo = 0;
 
         EditText txtUno = (EditText)findViewById(R.id.txtUno);
         EditText txtDos = (EditText)findViewById(R.id.txtDos);
@@ -35,16 +35,18 @@ public class MainActivity extends AppCompatActivity {
         if (txtUno.getText().length() == 0 || txtDos.getText().length() == 0){
             Toast.makeText(this, "No pueden haber campos vacios",Toast.LENGTH_SHORT).show();
         }
+
         else if (textoUno.compareTo("Fin")== 0 || textoDos.compareTo("Fin") == 0){
             Bundle bundle = new Bundle();
             bundle.putInt("contProcesamientos", contProcesamientos);
             bundle.putInt("contCheckbox", contCheckBox);
             bundle.putInt("contMismoContenido", contMismoContenido);
             bundle.putInt("caracTextoMasLargo", CaracTextoMasLargo);
-            Intent miIntent = new Intent(this, MostrarResultados.class);
+            Intent miIntent = new Intent(MainActivity.this, MostrarResultados.class);
             miIntent.putExtras(bundle);
             startActivity(miIntent);
         }
+
         else{
            contProcesamientos++;
             if (check.isChecked()){
@@ -62,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-
 
     }
 }

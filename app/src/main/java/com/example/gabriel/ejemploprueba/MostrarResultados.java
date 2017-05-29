@@ -18,15 +18,16 @@ public class MostrarResultados extends AppCompatActivity {
         TextView lblCantCheckbox = (TextView)findViewById(R.id.lblCantCheckbox);
         TextView lblCaracTextoMasLargo = (TextView)findViewById(R.id.lblCaracTextoMasLargo);
 
-        int CantProcesamientos = getIntent().getExtras().getInt("contProcesamientos");
-        int CantMismoContenido = getIntent().getExtras().getInt("contMismoContenido");
-        int CantCheckbox = getIntent().getExtras().getInt("contCheckbox");
-        int CaracTextoMasLargo = getIntent().getExtras().getInt("caracTextomasLargo");
+        Bundle datosRecibidos = this.getIntent().getExtras();
+        int CantProcesamientos = datosRecibidos.getInt("contProcesamientos");
+        int CantMismoContenido = datosRecibidos.getInt("contMismoContenido");
+        int CantCheckbox = datosRecibidos.getInt("contCheckbox");
+        int CaracTextoMasLargo = datosRecibidos.getInt("caracTextoMasLargo");
 
-        lblCantProcesamientos.setText(CantProcesamientos);
-        lblCantMismoContenido.setText(CantMismoContenido);
-        lblCantCheckbox.setText(CantCheckbox);
-        lblCaracTextoMasLargo.setText(CaracTextoMasLargo);
+        lblCantProcesamientos.setText(Integer.toString(CantProcesamientos));
+        lblCantMismoContenido.setText(Integer.toString(CantMismoContenido));
+        lblCantCheckbox.setText(Integer.toString(CantCheckbox));
+        lblCaracTextoMasLargo.setText(Integer.toString(CaracTextoMasLargo));
 
     }
 }
